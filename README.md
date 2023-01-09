@@ -1,4 +1,5 @@
-# workflow
+# workflow 自研工作流引擎，目前还在开发中，大体架构实现完毕，流程也可走通。
+联系方式：个人博客：https://aichidoubao.com/
 # 主要包结构
 
 bpmn
