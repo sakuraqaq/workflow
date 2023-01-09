@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:cf="http://compileflow.alibaba.com"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             typeLanguage="http://www.w3.org/2001/XMLSchema"
+             expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://compileflow.alibaba.com">
+
+ <process id="ktvExample" name="test" isExecutable="true">
+
+        <startEvent id="start" sourceRef="" targetRef="singLoop"/>
+
+         <subProcess id="singLoop" parentId="ktvExample" name="singLoop" sourceRef="start" targetRef="originalPrice">
+
+                    <startEvent id="singStart" sourceRef="singLoop" targetRef="sing"/>
+
+                    <serviceTask id="sing" name="sing task" type="spring-bean"
+                                 bean="ktvService"
+                                 class="com.allibaba.compileflow.test.mock.KtvService"
+                                 method="sing" sourceRef="singLoop" targetRef="singEnd">
+                    </serviceTask>
+                    <endEvent id="singEnd"/>
+         </subProcess>
+
+         <scriptTask id="originalPrice" name="original price" type="java"
+                                                              class="com.allibaba.compileflow.test.mock.KtvService"
+                                                              method="originalPrice"
+                                                              scriptFormat="ql"
+                                                              sourceRef="singLoop"
+                                                              targetRef="promotionPrice">
+                         <script><![CDATA[(round(price*0.9,0)).intValue()]]></script>
+         </scriptTask>
+
+                     <scriptTask id="promotionPrice" type="java"
+                                                     class="com.allibaba.compileflow.test.mock.KtvService"
+                                                     name="promotion task"
+                                                     method="promotionPrice"
+                                                     scriptFormat="ql"
+                                                     sourceRef="originalPrice"
+                                                     targetRef="pay" >
+                                <script><![CDATA[(round(price*0.9,0)).intValue()]]></script>
+                     </scriptTask>
+
+                    <serviceTask id="pay" name="pay" type="java"
+                                          class="com.allibaba.compileflow.test.mock.KtvService"
+                                          method="payMoney" sourceRef="promotionPrice" targetRef="gateway">
+                    </serviceTask>
+
+            <parallelGateway id="gateway" name="gateway" sourceRef="pay" sourceRefs="" targetRefs="branch1,branch2" />
+
+             <serviceTask id="branch1" name="branch1" type="java"
+                                                      class="com.allibaba.compileflow.test.mock.KtvService"
+                                                      method="serviceTask" sourceRef="gateway" targetRef="gateway1">
+             </serviceTask>
+
+             <serviceTask id="branch2" name="branch2" type="java"
+                                                      class="com.allibaba.compileflow.test.mock.KtvService"
+                                                      method="serviceTask" sourceRef="gateway" targetRef="gateway1">
+             </serviceTask>
+
+             <parallelGateway id="gateway1" name="gateway" targetRefs="" sourceRefs="branch1,branch2" targetRef="end" />
+
+        <endEvent id="end"  method="end" sourceRef="gateway1" targetRef=""/>
+ </process>
+</definitions>

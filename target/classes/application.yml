@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://rm-bp1jai672vn7r912s1250108m.mysql.rds.aliyuncs.com:3306/sakuratest?useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&useSSL=false
+    username: sakura01
+    password: sakura01
+
+  application:
+    name: web-chat
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
