@@ -60,6 +60,7 @@ public class BaseProcessRuntime extends AbstractProcessRuntime {
 
     @Override
     protected ProcessInstance getProcessInstance(ElementContainer<FlowElement, FlowNode> process) {
+        // TODO: 2023/2/16 需要区分类是bean 还是一个普通的class 
         // TODO: 2022/11/1 dubbo 获取提供者
         String name = process.getName();
         // TODO: 2022/11/1 找到对应的实现类

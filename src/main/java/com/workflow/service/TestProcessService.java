@@ -2,9 +2,7 @@ package com.workflow.service;
 
 
 import com.workflow.runtime.AbstractProcessInstance;
-import com.workflow.runtime.ProcessInstance;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
