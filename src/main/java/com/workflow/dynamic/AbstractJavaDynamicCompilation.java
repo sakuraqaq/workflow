@@ -1,5 +1,8 @@
 package com.workflow.dynamic;
 
+import com.workflow.dynamic.entity.ClassParam;
+import com.workflow.dynamic.entity.FieldParam;
+import com.workflow.dynamic.entity.MethodParam;
 import javassist.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;

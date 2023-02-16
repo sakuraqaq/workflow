@@ -1,4 +1,4 @@
-package com.workflow.dynamic;
+package com.workflow.dynamic.entity;
 
 import lombok.Data;
 

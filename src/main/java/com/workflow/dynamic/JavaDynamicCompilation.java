@@ -1,5 +1,6 @@
 package com.workflow.dynamic;
 
+import com.workflow.dynamic.entity.ClassParam;
 import javassist.ClassPool;
 import javassist.CtClass;
 

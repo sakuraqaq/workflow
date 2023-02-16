@@ -1,5 +1,9 @@
 package com.workflow.dynamic;
 
+import com.workflow.dynamic.entity.ClassParam;
+import com.workflow.dynamic.entity.FieldParam;
+import com.workflow.dynamic.entity.MethodParam;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 

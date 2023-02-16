@@ -39,8 +39,13 @@ jdbc
 
 ## 使用javassist 动态生成编译.class文件到指定目录下
 例子：
+
 ````java
 package com.workflow.dynamic;
+
+import com.workflow.dynamic.entity.ClassParam;
+import com.workflow.dynamic.entity.FieldParam;
+import com.workflow.dynamic.entity.MethodParam;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
